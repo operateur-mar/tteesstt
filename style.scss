@@ -1,0 +1,41 @@
+.corepage{
+    width: 100%;
+    text-align: center;
+    padding-top: 10em;
+}
+
+/* Style for the page content outside the modal */
+#page-content {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+.modal-content {
+    border: none;
+}
+
+  /* Hide the page content when modal is shown */
+  .hidden-content {
+    display: none;
+}
+
+/* Printing styles */
+@media print {
+    body * {
+        visibility: hidden;  /* Hide everything on the page */
+    }
+    .modal-content, .modal-content * {
+        visibility: visible;  /* Make the modal content visible */
+    }
+    .modal-footer, .btn { 
+        display: none;  /* Hide the buttons (footer and buttons) during print */
+    }
+    .modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    .table {
+        border-color: #fff;
+    }
+}
