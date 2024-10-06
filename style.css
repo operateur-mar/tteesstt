@@ -4,6 +4,17 @@
   padding-top: 10em;
 }
 
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: center; /* Horizontally center */
+  vertical-align: middle; /* Vertically center */
+  padding: 10px; /* Optional padding for better spacing */
+}
+
+/* Optional: Center the table itself on the page */
 /* Style for the page content outside the modal */
 #page-content {
   padding: 20px;
@@ -19,14 +30,24 @@
   display: none;
 }
 
-/*.elementitem{
-    margin-top: -10px;
-    &:nth-child(1){
-        margin-top: 0px;
-    }
-}*/
+.elementitem {
+  padding: 10px 0px;
+}
+
 /* Printing styles */
 @media print {
+  nav, footer {
+    display: none; /* Hide navigation and footer */
+  }
+  @page {
+    size: landscape;
+    width: 100%;
+    /*margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;*/
+  }
   body * {
     visibility: hidden; /* Hide everything on the page */
   }
@@ -43,10 +64,10 @@
     width: 100%;
   }
   .table {
-    border-color: #fff;
+    border-color: transparent;
   }
-  #DES {
+  td.special-width {
     font-size: 12px;
-    line-height: 1;
+    height: 50px;
   }
 }/*# sourceMappingURL=style.css.map */

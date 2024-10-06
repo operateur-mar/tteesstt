@@ -31,7 +31,7 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=5';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=10';
 
   // Use jQuery to perform an AJAX request
   $.ajax({
@@ -45,9 +45,12 @@ function printScreen() {
       // API URL
       type: 'GET',   // HTTP method
       dataType: 'json',  // Specify that we're expecting JSON data
-      success: function(response) {
-        console.log(JSON.stringify(response));
-        display(JSON.stringify(response));
+      success: function (data) {
+        // Assuming the API response is an array of objects
+        // Convert JSON object data into an array of values (for demo purposes)
+        let dataasarray = Object.values(data);
+        display(dataasarray)
+      
     },
       error: function(error) {
           // Handle error here
@@ -67,7 +70,8 @@ function printScreen() {
     const qtescontainer = $('#QTES'); 
     const puscontainer = $('#PUS'); 
     const totalcontainer = $('#TOTALS_PROD'); 
-
+    const testing = $('#thiis'); 
+    testing.empty(); 
 
     // clear containers
     oeilscontainer.empty(); 
@@ -76,47 +80,51 @@ function printScreen() {
     axescontainer.empty(); 
     addscontainer.empty(); 
     qtescontainer.empty(); 
-    //descontainer.empty(); 
+    descontainer.empty(); 
     puscontainer.empty(); 
     totalcontainer.empty(); 
 
-    //parsing data
-    const parsedData = JSON.parse(data);
-  
+    /** HANDLING DATA */
+    let rows = []; 
     /* FILL MODAL CONTENT */
-    parsedData['OEILS'].forEach(element => {
-        oeilscontainer.append('<div class="elementitem">'+element+'</div></br>')
-     });
-
-    parsedData['CYLS'].forEach(element => {
-        cylscontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['SPHS'].forEach(element => {
-        sphscontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['AXES'].forEach(element => {
-        axescontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['ADDS'].forEach(element => {
-        addscontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['DESIGNATIONS'].forEach(element => {
-        descontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['QTES'].forEach(element => {
-        qtescontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['PUS'].forEach(element => {
-        puscontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-    parsedData['TOTALS_PROD'].forEach(element => {
-        totalcontainer.append('<div class="elementitem">'+element+'</div></br>')
-    });
-
-
-  
+   for (let index = 0; index < 10; index++) {
+    let row = data[index];
+    rows.push(row)
+    
+   }
+   let OEILS = rows[1]; 
+   let CYLS = rows[2]; 
+   let SPH = rows[3]; 
+   let AXES = rows[4]; 
+   let ADDS = rows[5]; 
+   let DESIGNATIONS = rows[6]; 
+   let QTES = rows[7]; 
+   let PUS = rows[8]; 
+   let TOTALS_PROD = rows[9]; 
 
     /**** End handling data */
+
+    /** DISPLAYING DATA */
+
+   for (let index = 0; index < OEILS.length; index++) {
+    console.log(CYLS[index]); 
+    testing.append(`
+        <tr>
+        <td colspan="1">` + OEILS[index] + `</td>
+        <td colspan="1">` + CYLS[index] + `</td>
+        <td colspan="1">` + SPH[index] + `</td>
+        <td colspan="1">` + AXES[index] + `</td>
+        <td colspan="1">` + ADDS[index] + `</td>
+        <td colspan="4" class="special-width">` + DESIGNATIONS[index] + `</td>
+        <td colspan="1">` + QTES[index] + `</td>
+        <td colspan="1">` + PUS[index] + `</td>
+        <td colspan="1">` + TOTALS_PROD[index] + `</td>
+
+        </tr>`)
+   }
+
+    /** END DISPLAYING DATA */
+
 
 }
 
