@@ -31,14 +31,13 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://pubwebo.com/css/ws/ws_app_pw.php?typeop=listpromos&p=1';
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // only for localtest
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=5';
 
   // Use jQuery to perform an AJAX request
   $.ajax({
       url: apiURL,  
       "default":{
-            "dataType": "jsonp",
+        "dataType": "jsonp",
 	    "type": "GET",
 	    "contentType": "Application/json",
 	    "crossDomain": true,
@@ -46,28 +45,75 @@ function printScreen() {
       // API URL
       type: 'GET',   // HTTP method
       dataType: 'json',  // Specify that we're expecting JSON data
-      success: function(data) {
-          // Call function to display data in HTML
-          displayData(data);
-      },
+      success: function(response) {
+        console.log(JSON.stringify(response));
+        display(JSON.stringify(response));
+    },
       error: function(error) {
           // Handle error here
           $('#dataContainer').html('Error loading data');
       }
   });
 
-  // Function to display data in HTML
-  function displayData(data) {
-      const dataContainer = $('#dataContainer');
-      dataContainer.empty(); // Clear previous content
+  // Function to display data
+  function display(data) {
+    // setting containers
+    const oeilscontainer = $('#OEILS'); 
+    const cylscontainer = $('#CYLS'); 
+    const sphscontainer = $('#SPHS'); 
+    const axescontainer = $('#AXES'); 
+    const addscontainer = $('#ADDS'); 
+    const descontainer = $('#DES'); 
+    const qtescontainer = $('#QTES'); 
+    const puscontainer = $('#PUS'); 
+    const totalcontainer = $('#TOTALS_PROD'); 
 
-      // Loop through the data and append each item to the container
-      data.forEach(function(item) {
-          const postElement = `<div>
-              <p>${item.ERREUR}</p>
-          </div>`;
-          dataContainer.append(postElement);
-      });
+
+    // clear containers
+    oeilscontainer.empty(); 
+    cylscontainer.empty(); 
+    sphscontainer.empty(); 
+    axescontainer.empty(); 
+    addscontainer.empty(); 
+    qtescontainer.empty(); 
+    //descontainer.empty(); 
+    puscontainer.empty(); 
+    totalcontainer.empty(); 
+
+    //parsing data
+    const parsedData = JSON.parse(data);
+  
+    /* FILL MODAL CONTENT */
+    parsedData['OEILS'].forEach(element => {
+        oeilscontainer.append('<div class="elementitem">'+element+'</div></br>')
+     });
+
+    parsedData['CYLS'].forEach(element => {
+        cylscontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['SPHS'].forEach(element => {
+        sphscontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['AXES'].forEach(element => {
+        axescontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['ADDS'].forEach(element => {
+        addscontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['DESIGNATIONS'].forEach(element => {
+        descontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['QTES'].forEach(element => {
+        qtescontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['PUS'].forEach(element => {
+        puscontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+    parsedData['TOTALS_PROD'].forEach(element => {
+        totalcontainer.append('<div class="elementitem">'+element+'</div></br>')
+    });
+
+
   
 
     /**** End handling data */

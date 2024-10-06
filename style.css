@@ -19,6 +19,12 @@
   display: none;
 }
 
+/*.elementitem{
+    margin-top: -10px;
+    &:nth-child(1){
+        margin-top: 0px;
+    }
+}*/
 /* Printing styles */
 @media print {
   body * {
@@ -38,5 +44,9 @@
   }
   .table {
     border-color: #fff;
+  }
+  #DES {
+    font-size: 12px;
+    line-height: 1;
   }
 }/*# sourceMappingURL=style.css.map */

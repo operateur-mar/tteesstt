@@ -17,6 +17,12 @@
   .hidden-content {
     display: none;
 }
+/*.elementitem{
+    margin-top: -10px;
+    &:nth-child(1){
+        margin-top: 0px;
+    }
+}*/
 
 /* Printing styles */
 @media print {
@@ -37,5 +43,9 @@
     }
     .table {
         border-color: #fff;
+    }
+    #DES{
+        font-size:12px;
+        line-height: 1;
     }
 }
