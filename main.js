@@ -31,13 +31,18 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=10';
+  const apiURL = 'https://pubwebo.com/css/ws/ws_app_pw.php?typeop=listpromos&p=1';
   const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // only for localtest
 
   // Use jQuery to perform an AJAX request
   $.ajax({
       url: apiURL,  
-      headers: {  'Access-Control-Allow-Origin': 'http://127.0.0.1:5500' },
+      "default":{
+            "dataType": "jsonp",
+	    "type": "GET",
+	    "contentType": "Application/json",
+	    "crossDomain": true,
+	    "Access-Control-Allow-Origin": "*",},
       // API URL
       type: 'GET',   // HTTP method
       dataType: 'json',  // Specify that we're expecting JSON data
@@ -59,7 +64,6 @@ function printScreen() {
       // Loop through the data and append each item to the container
       data.forEach(function(item) {
           const postElement = `<div>
-              <h3>${item}</h3>
               <p>${item.ERREUR}</p>
           </div>`;
           dataContainer.append(postElement);
