@@ -32,10 +32,11 @@ function printScreen() {
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
   const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=10';
+  const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Use jQuery to perform an AJAX request
   $.ajax({
-      url: apiURL,  
+      url: "https://cors-anywhere.herokuapp.com/https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=10",  
       "default":{
         "dataType": "jsonp",
 	    "type": "GET",
