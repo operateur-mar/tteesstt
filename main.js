@@ -31,12 +31,12 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=10';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=7';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Use jQuery to perform an AJAX request
   $.ajax({
-      url: "https://cors-anywhere.herokuapp.com/https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=10",  
+      url: proxy + apiURL,  
       "default":{
         "dataType": "jsonp",
 	    "type": "GET",
@@ -71,6 +71,8 @@ function printScreen() {
     const qtescontainer = $('#QTES'); 
     const puscontainer = $('#PUS'); 
     const totalcontainer = $('#TOTALS_PROD'); 
+    const nclient = $('#nclient'); 
+    let date = $('#date'); 
     const testing = $('#thiis'); 
     testing.empty(); 
 
@@ -84,7 +86,14 @@ function printScreen() {
     descontainer.empty(); 
     puscontainer.empty(); 
     totalcontainer.empty(); 
+    nclient.empty(); 
+    //date.empty(); 
 
+    nclient.append(data[12]); 
+    date.append(data[11]);
+    console.log("data is = "+date)
+    /** GET DATE and CLIENT */
+    //
     /** HANDLING DATA */
     let rows = []; 
     /* FILL MODAL CONTENT */
@@ -102,24 +111,25 @@ function printScreen() {
    let QTES = rows[7]; 
    let PUS = rows[8]; 
    let TOTALS_PROD = rows[9]; 
-
+   
     /**** End handling data */
 
     /** DISPLAYING DATA */
 
    for (let index = 0; index < OEILS.length; index++) {
-    console.log(CYLS[index]); 
+    
     testing.append(`
+      
         <tr>
-        <td colspan="1">` + OEILS[index] + `</td>
-        <td colspan="1">` + CYLS[index] + `</td>
-        <td colspan="1">` + SPH[index] + `</td>
-        <td colspan="1">` + AXES[index] + `</td>
-        <td colspan="1">` + ADDS[index] + `</td>
-        <td colspan="4" class="special-width">` + DESIGNATIONS[index] + `</td>
-        <td colspan="1">` + QTES[index] + `</td>
-        <td colspan="1">` + PUS[index] + `</td>
-        <td colspan="1">` + TOTALS_PROD[index] + `</td>
+        <td > <div class="oeil">` + OEILS[index] + `</div></td>
+        <td > <div class="iitem">` + CYLS[index] + `</div></td>
+        <td > <div class="iitem">` + SPH[index] + `</div></td>
+        <td > <div class="iitem">` + AXES[index] + `</div></td>
+        <td > <div class="iitem">` + ADDS[index] + `</div></td>
+        <td ><div  class="designation">` + DESIGNATIONS[index] + `</div></td>
+        <td > <div class= "quantite">` + QTES[index] + `</div></td>
+        <td > <div class="iitem">` + PUS[index] + `</div></td>
+        <td > <div class="iitem">` + TOTALS_PROD[index] + `</div></td>
 
         </tr>`)
    }

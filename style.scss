@@ -1,81 +1,209 @@
-.corepage{
-    width: 100%;
+.corepage {
+   
     text-align: center;
     padding-top: 10em;
 }
 
+.col-1, .col-10 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 table {
-    width: 100%;
-    //border-collapse: collapse;
+   
+    border-collapse: collapse;
 }
 
 th, td {
     text-align: center; /* Horizontally center */
     vertical-align: middle; /* Vertically center */
-    padding: 10px; /* Optional padding for better spacing */
+  //  padding: 10px; /* Optional padding for better spacing */
+    font-size: 15px; /* Smaller font size for printing */
 }
-
-/* Optional: Center the table itself on the page */
-
 
 /* Style for the page content outside the modal */
 #page-content {
     padding: 20px;
     background-color: #f5f5f5;
 }
+
 .modal-content {
     border: none;
 }
 
-  /* Hide the page content when modal is shown */
-  .hidden-content {
+/* Hide the page content when modal is shown */
+.hidden-content {
     display: none;
 }
 
-.elementitem{
-   padding: 10px 0px ;
+.elementitem {
+    padding: 10px 0px;
 }
 
+/* Manage date + nclient */ 
+.ontopsection{
+   display: none;
+} 
+.total-section{
+   display: none;
+}
 
 /* Printing styles */
 @media print {
-    nav, footer {
-        display: none; /* Hide navigation and footer */
-    }
+   
     @page {
-        size: landscape;
-        width: 100%;
-        /*margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;*/
+        size:  portrait; /* Set page size to A4 portrait */
+        margin-left: 10.16mm!important; /* Remove all margins */
+        padding: 0;
+        margin-right: 5px!important;
+        margin-top: 50mm!important;
+
     }
+   
+
     body * {
+       // text-align: center;
+        //margin:0 5px 0 5px!important;
+       // padding: 10px!important;
         visibility: hidden;  /* Hide everything on the page */
+        text-align: center!important;
+        //margin-left: -3px!important;
+       // margin-top: 20px!important;
+
     }
+    table{
+        width: 100%!important;
+        text-align: center!important;
+    }
+    .modal-dialog{
+        max-width: 100%;
+
+        table{
+        //border-color: transparent!important;
+        }
+        td,th,tr{
+            padding: 0!important;
+            margin: 0!important;
+            
+        }
+        
+        thead{
+            &:nth-child(1){
+                display: none!important;
+            }
+        }
+       td{
+            width: 50px!important;
+            &:nth-child(1){
+                width: 40px!important;
+            }
+            &:nth-child(6){
+                width: 180px!important;
+              // padding-right: 150px!important;
+             }
+            //width: 70px!important;
+          /*  &:nth-child(1){
+             //  width: 60px!important;
+            }
+            &:nth-child(2){
+               // width: 50px!important;
+            }
+            &:nth-child(3){
+                //width: 50px!important;
+                //padding-right: 8px!important;
+            }
+            &:nth-child(4){
+                width: 60px!important;
+                margin-left: 10px!important;
+                
+            }
+        
+            &:nth-child(5){
+                width: 60px!important;
+                margin-left: 10px!important;
+            }
+           
+            &:nth-child(7){
+                width: 50px!important;
+
+            }*/
+        }
+        .iitem{
+            //width: 70px!important;
+        }
+        .oeil{
+          //  width: 45px;
+            text-align: center!important;
+        }
+        .designation{
+            //width: 145px!important;
+            text-align: center !important;
+            display: flex;
+            justify-content: center;
+             padding: 0 !important;
+            /* margin: 0 !important; */
+            //width: 100%;
+        }
+        .quantite{
+           // margin-left: 30px!important;
+        }
+    }
+   
     .modal-content, .modal-content * {
-        visibility: visible;  /* Make the modal content visible */
+        padding: 0 !important;
+        //margin: 40px 0px 0 0px !important;
+        visibility: visible;  /* Show modal content */
+        font-size: 16px !important; /* Smaller font size for printing */
+        //margin: 0px !important;
+        
+        
+       
+      
+        th{
+            font-size: 13px!important;
+        }
        
     }
+
     .modal-footer, .btn { 
-        display: none;  /* Hide the buttons (footer and buttons) during print */
+        display: none;  /* Hide buttons during print */
     }
-    .modal {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-    .table {
-        border-color: transparent;
-       
-    }
-    td.special-width {
-        //width: 300px; /* Increase width during printing */
-        font-size: 12px;
-        height: 50px;
+
+    .table-responsive {
+        overflow: hidden !important; /* Disable scrollbars */
+       // max-width: 100% !important; /* Full width for the table container */
     }
    
     
+    .special-width{
+        font-size: 15px!important;
+        margin: 15px!important;
+    }
+   
+    //*  Manage date + nclient*/
+     .ontopsection{
+       margin-left: 25mm!important;
+       //margin-right: 10mm!important;
+        display: flex!important;
+        justify-content: space-between;
+        margin-bottom: 10mm!important;
+     } 
+     .total-section{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+        margin-right: 5mm!important;
+     }
+    
 }
+
+/*    .modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full width for modal */
+       // height: auto; /* Auto height */
+   // }*/

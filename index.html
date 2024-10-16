@@ -16,13 +16,25 @@
 <body>
 
     <!-- Main Page Content -->
-    <div id="mainContent">
-        <h1>Welcome to the Page</h1>
-        <p>This is the content that will be hidden when the modal is shown.</p>
-        <button type="button" id="openModalBtn" class="btn btn-primary">Show Modal</button>
+    <div id="mainContent" class="corepage">
+        <h1></h1>
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="col-1">
+              <p class="piece">#1</p>
+            </div>
+            <div class="col-10">
+              <p class="piece">Exemple de titre de contenu</p>
+            </div>
+            <div class="col-1">
+              <button type="button" id="openModalBtn" class="btn btn-primary">Imprimer</button>
+            </div>
+          </div>
+        </div>
+       
 
         <div id="dataContainer">
-          Loading data...
+          
       </div>
 
     </div>
@@ -35,6 +47,10 @@
         <div class="modal-content">
           <div class="modal-body">
             <div class="modal-body">
+             <div class="ontopsection">
+              <div class="nclient" id="nclient"></div>
+              <div class="date" id="date"></div>
+             </div>
           <!-- ROWING     <div class="row">
                 <div class="col-1">OEILS</div>
                 <div class="col-1">OEILS</div>
@@ -58,22 +74,28 @@
                 <div class="col-1" id="TOTALS_PROD">chargement</div>
               </div>-->
 
-              <table class="table table-bordered table-container">
-                <thead>
-                  <th  colspan="1">Oeil</th>
-                  <th  colspan="1">Cyl</th>
-                  <th  colspan="1">Sph</th>
-                  <th  colspan="1">Axe</th>
-                  <th  colspan="1">Add</th>
-                  <th  colspan="4">Désignation</th>
-                  <th  colspan="1">Quantité</th>
-                  <th  colspan="1" >PrixU</th>
-                  <th  colspan="1">Total</th>
-                </thead> 
-                <tbody id="thiis">
-               
-                </tbody>
-              </table> 
+              <div class="table-responsive">
+                <table class="table table-bordered table-container">
+                  <thead>
+                    <th><div class="oeil">Oeil</div></th>
+                    <th><div class="iitem">Cyl</div></th>
+                    <th><div class="iitem">Sph</div></th>
+                    <th><div class="iitem">Axe</div></th>
+                    <th><div class="iitem">Add</div></th>
+                    <th><div class="designation">Désignation</div></th>
+                    <th><div class="quantite">Quantité</div></th>
+                    <th><div class="iitem">PrixU</div></th>
+                    <th><div class="iitem">Total</div></th>
+                  </thead> 
+                  <tbody id="thiis">
+                 
+                  </tbody>
+                </table> 
+              </div>
+
+              <div class="total-section">
+                <p>1286</p>
+              </div>
             </div>
           </div>
           <div class="modal-footer">

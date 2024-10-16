@@ -1,20 +1,26 @@
 .corepage {
-  width: 100%;
   text-align: center;
   padding-top: 10em;
 }
 
+.col-1, .col-10 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 table {
-  width: 100%;
+  border-collapse: collapse;
 }
 
 th, td {
   text-align: center; /* Horizontally center */
   vertical-align: middle; /* Vertically center */
-  padding: 10px; /* Optional padding for better spacing */
+  font-size: 15px; /* Smaller font size for printing */
 }
 
-/* Optional: Center the table itself on the page */
 /* Style for the page content outside the modal */
 #page-content {
   padding: 20px;
@@ -34,40 +40,119 @@ th, td {
   padding: 10px 0px;
 }
 
+/* Manage date + nclient */
+.ontopsection {
+  display: none;
+}
+
+.total-section {
+  display: none;
+}
+
 /* Printing styles */
 @media print {
-  nav, footer {
-    display: none; /* Hide navigation and footer */
-  }
   @page {
-    size: landscape;
-    width: 100%;
-    /*margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;*/
+    size: portrait; /* Set page size to A4 portrait */
+    margin-left: 10.16mm !important; /* Remove all margins */
+    padding: 0;
+    margin-right: 5px !important;
+    margin-top: 50mm !important;
   }
   body * {
     visibility: hidden; /* Hide everything on the page */
+    text-align: center !important;
+  }
+  table {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .modal-dialog {
+    max-width: 100%;
+  }
+  .modal-dialog td, .modal-dialog th, .modal-dialog tr {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .modal-dialog thead:nth-child(1) {
+    display: none !important;
+  }
+  .modal-dialog td {
+    width: 50px !important;
+    /*  &:nth-child(1){
+       //  width: 60px!important;
+      }
+      &:nth-child(2){
+         // width: 50px!important;
+      }
+      &:nth-child(3){
+          //width: 50px!important;
+          //padding-right: 8px!important;
+      }
+      &:nth-child(4){
+          width: 60px!important;
+          margin-left: 10px!important;
+
+      }
+
+      &:nth-child(5){
+          width: 60px!important;
+          margin-left: 10px!important;
+      }
+
+      &:nth-child(7){
+          width: 50px!important;
+
+      }*/
+  }
+  .modal-dialog td:nth-child(1) {
+    width: 40px !important;
+  }
+  .modal-dialog td:nth-child(6) {
+    width: 180px !important;
+  }
+  .modal-dialog .oeil {
+    text-align: center !important;
+  }
+  .modal-dialog .designation {
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
+    padding: 0 !important;
+    /* margin: 0 !important; */
   }
   .modal-content, .modal-content * {
-    visibility: visible; /* Make the modal content visible */
+    padding: 0 !important;
+    visibility: visible; /* Show modal content */
+    font-size: 16px !important; /* Smaller font size for printing */
+  }
+  .modal-content th, .modal-content * th {
+    font-size: 13px !important;
   }
   .modal-footer, .btn {
-    display: none; /* Hide the buttons (footer and buttons) during print */
+    display: none; /* Hide buttons during print */
   }
-  .modal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+  .table-responsive {
+    overflow: hidden !important; /* Disable scrollbars */
   }
-  .table {
-    border-color: transparent;
+  .special-width {
+    font-size: 15px !important;
+    margin: 15px !important;
   }
-  td.special-width {
-    font-size: 12px;
-    height: 50px;
+  .ontopsection {
+    margin-left: 25mm !important;
+    display: flex !important;
+    justify-content: space-between;
+    margin-bottom: 10mm !important;
   }
-}/*# sourceMappingURL=style.css.map */
+  .total-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 5mm !important;
+  }
+}
+/*    .modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full width for modal *//*# sourceMappingURL=style.css.map */
