@@ -31,7 +31,7 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=7';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=20';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Use jQuery to perform an AJAX request
@@ -70,7 +70,7 @@ function printScreen() {
     const descontainer = $('#DES'); 
     const qtescontainer = $('#QTES'); 
     const puscontainer = $('#PUS'); 
-    const totalcontainer = $('#TOTALS_PROD'); 
+    const totalcontainer = $('#totals'); 
     const nclient = $('#nclient'); 
     let date = $('#date'); 
     const testing = $('#thiis'); 
@@ -116,23 +116,53 @@ function printScreen() {
 
     /** DISPLAYING DATA */
 
-   for (let index = 0; index < OEILS.length; index++) {
-    
-    testing.append(`
-      
-        <tr>
-        <td > <div class="oeil">` + OEILS[index] + `</div></td>
-        <td > <div class="iitem">` + CYLS[index] + `</div></td>
-        <td > <div class="iitem">` + SPH[index] + `</div></td>
-        <td > <div class="iitem">` + AXES[index] + `</div></td>
-        <td > <div class="iitem">` + ADDS[index] + `</div></td>
-        <td ><div  class="designation">` + DESIGNATIONS[index] + `</div></td>
-        <td > <div class= "quantite">` + QTES[index] + `</div></td>
-        <td > <div class="iitem">` + PUS[index] + `</div></td>
-        <td > <div class="iitem">` + TOTALS_PROD[index] + `</div></td>
-
-        </tr>`)
-   }
+    let count = 0; 
+    for (let index = 0; index < OEILS.length; index++) {
+        count++; 
+        
+        // Append the regular table row
+        testing.append(`
+            <tr>
+                <td><div class="oeil">` + OEILS[index] + `</div></td>
+                <td><div class="iitem">` + CYLS[index] + `</div></td>
+                <td><div class="iitem">` + SPH[index] + `</div></td>
+                <td><div class="iitem">` + AXES[index] + `</div></td>
+                <td><div class="iitem">` + ADDS[index] + `</div></td>
+                <td><div class="designation">` + DESIGNATIONS[index] + `</div></td>
+                <td><div class="quantite">` + QTES[index] + `</div></td>
+                <td><div class="iitem">` + PUS[index] + `</div></td>
+                <td><div class="iitem">` + TOTALS_PROD[index] + `</div></td>
+            </tr>
+        `);
+        
+        // Gap rows: 
+        // Check if the counter reached 12
+        if (count === 12) {
+            // Append a row with the total section and gap after 12th row
+            testing.append(`
+                <tr>
+                    <td colspan="9">
+                        <div class="total-section">
+                            <p>***</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9">
+                        <div class="gap"></div>
+                    </td>
+                </tr>
+            `);
+            
+            // Reset the count
+            count = 0;
+        }
+        if(index === OEILS.length-1){
+            totalcontainer.html(
+                "<div><p>1995</p></div>"
+            )
+        }
+    }
 
     /** END DISPLAYING DATA */
 

@@ -82,7 +82,7 @@ th, td {
         max-width: 100%;
 
         table{
-        //border-color: transparent!important;
+        border-color: transparent!important;
         }
         td,th,tr{
             padding: 0!important;
@@ -186,7 +186,7 @@ th, td {
     //*  Manage date + nclient*/
      .ontopsection{
        margin-left: 25mm!important;
-       //margin-right: 10mm!important;
+       margin-right: 10mm!important;
         display: flex!important;
         justify-content: space-between;
         margin-bottom: 10mm!important;
@@ -196,6 +196,9 @@ th, td {
         justify-content: flex-end;
         margin-top: 20px;
         margin-right: 5mm!important;
+     }
+     .gap{
+        height: 250px;
      }
     
 }
