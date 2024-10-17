@@ -31,7 +31,7 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=20';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=2';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Use jQuery to perform an AJAX request
@@ -158,8 +158,9 @@ function printScreen() {
             count = 0;
         }
         if(index === OEILS.length-1){
+            console.log('prix is = ' +data[10]);
             totalcontainer.html(
-                "<div><p>1995</p></div>"
+                `<div><p>`+ data[10]+`</p></div>`
             )
         }
     }

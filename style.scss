@@ -55,34 +55,51 @@ th, td {
 @media print {
    
     @page {
-        size:  portrait; /* Set page size to A4 portrait */
+        size:  auto; /* Set page size to A4 portrait */
         margin-left: 10.16mm!important; /* Remove all margins */
         padding: 0;
         margin-right: 5px!important;
-        margin-top: 50mm!important;
-
+        margin-top: 15mm!important; // was 50mm */ 
+        overflow: visible!important;
+        html {
+            height: auto;
+        }
     }
    
 
-    body * {
+    body {
        // text-align: center;
         //margin:0 5px 0 5px!important;
        // padding: 10px!important;
-        visibility: hidden;  /* Hide everything on the page */
-        text-align: center!important;
+        //visibility: hidden;  /* Hide everything on the page */
+       // text-align: center!important;
         //margin-left: -3px!important;
        // margin-top: 20px!important;
+       overflow: hidden!important;
+       visibility: hidden!important;
+    }
+    .corepage{
+       padding: 0!important;
 
     }
-    table{
-        width: 100%!important;
-        text-align: center!important;
+    .modal{
+        overflow: visible !important; 
+        max-width: 100%;
+        position: static !important; /* Remove fixed positioning */
+        width: 100% !important; /* Full width */
+        height: 100% !important; /* Allow height to be automatic */
+        overflow: visible !important; /* Allow overflow */
+        display: block !important; /* Make sure it displays */
+        margin: 0; /* Remove margins */
     }
     .modal-dialog{
-        max-width: 100%;
-
+       
+        margin: 0!important;
+        max-width: 100%!important;
         table{
         border-color: transparent!important;
+        width: 100%!important;
+        text-align: center!important;
         }
         td,th,tr{
             padding: 0!important;
@@ -198,7 +215,7 @@ th, td {
         margin-right: 5mm!important;
      }
      .gap{
-        height: 250px;
+        height: 150px;
      }
     
 }
