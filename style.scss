@@ -50,6 +50,10 @@ th, td {
 .total-section{
    display: none;
 }
+.second-titling-section{
+  
+display: none!important;
+}
 
 /* Printing styles */
 @media print {
@@ -100,6 +104,7 @@ th, td {
         border-color: transparent!important;
         width: 100%!important;
         text-align: center!important;
+        margin-top: 20px!important;
         }
         td,th,tr{
             padding: 0!important;
@@ -215,8 +220,29 @@ th, td {
         margin-right: 5mm!important;
      }
      .gap{
-        height: 150px;
+        height: 80px;
      }
+     .price{
+        margin-top: 70px;
+        margin-right: 10px;
+     }
+     .second-titling-section{
+        display: table-row!important;
+        height: 120px!important;
+        
+        td{
+            &:nth-child(1){
+                padding-left: 100px!important;
+                text-align: left;
+
+    
+            }
+            &:nth-child(2){
+                text-align: right;
+                padding-right: 50px!important;                 
+            }
+        }
+    }
     
 }
 

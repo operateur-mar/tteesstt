@@ -31,7 +31,7 @@ function printScreen() {
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=2';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=17';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Use jQuery to perform an AJAX request
@@ -137,7 +137,7 @@ function printScreen() {
         
         // Gap rows: 
         // Check if the counter reached 12
-        if (count === 12) {
+        if (count === 10 && index != OEILS.length -1) {
             // Append a row with the total section and gap after 12th row
             testing.append(`
                 <tr>
@@ -152,17 +152,43 @@ function printScreen() {
                         <div class="gap"></div>
                     </td>
                 </tr>
+                <tr class="second-titling-section">
+                    <td colspan="6">`+data[12]+`</td>
+                    <td colspan="6">`+data[11]+`</td>
+
+                </tr>
             `);
-            
+           
             // Reset the count
             count = 0;
         }
-        if(index === OEILS.length-1){
+        if (count % 10 == 0 && index === OEILS.length-1) {
+            // Append a row with the total section and gap after 12th row
+            testing.append(`
+                <tr>
+                    <td colspan="9">
+                        <div class="total-section">
+                            <p>`+data[10]+`</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9">
+                        <div class="gap"></div>
+                    </td>
+                </tr>
+            `);
+           
+            // Reset the count
+            count = 0;
+        }
+        if(index === OEILS.length-1 && count%10 != 0){
             console.log('prix is = ' +data[10]);
             totalcontainer.html(
-                `<div><p>`+ data[10]+`</p></div>`
+                `<div class="price"><p>`+ data[10]+`</p></div>`
             )
         }
+       
     }
 
     /** END DISPLAYING DATA */
