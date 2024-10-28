@@ -1,8 +1,6 @@
 $(document).ready(function(){
-    // printing screen: 
-function printScreen() {
-    window.print();  // Trigger the browser's print dialog
-}
+    
+
 
 // hide content on screen: 
  // Get the button, modal, and main content elements
@@ -26,15 +24,19 @@ function printScreen() {
 
  // Print only the modal content when the Print button is clicked
  printModalBtn.addEventListener('click', function() {
-     window.print();  // Trigger the print dialog
+    
+    
+    window.print();  //manual print
+    //auto print: 
+    printModalContent();
  });
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=17';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=20';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
-  // Use jQuery to perform an AJAX request
+  // Ajax Jquery
   $.ajax({
       url: proxy + apiURL,  
       "default":{
@@ -44,18 +46,17 @@ function printScreen() {
 	    "crossDomain": true,
 	    "Access-Control-Allow-Origin": "*",},
       // API URL
-      type: 'GET',   // HTTP method
-      dataType: 'json',  // Specify that we're expecting JSON data
+      type: 'GET',   
+      dataType: 'json',  
       success: function (data) {
-        // Assuming the API response is an array of objects
-        // Convert JSON object data into an array of values (for demo purposes)
+      
         let dataasarray = Object.values(data);
         display(dataasarray)
       
     },
       error: function(error) {
-          // Handle error here
-          $('#dataContainer').html('Error loading data');
+          
+          $('#dataContainer').html('Error!');
       }
   });
 
@@ -91,9 +92,8 @@ function printScreen() {
 
     nclient.append(data[12]); 
     date.append(data[11]);
-    console.log("data is = "+date)
-    /** GET DATE and CLIENT */
-    //
+   
+    
     /** HANDLING DATA */
     let rows = []; 
     /* FILL MODAL CONTENT */
@@ -183,7 +183,7 @@ function printScreen() {
             count = 0;
         }
         if(index === OEILS.length-1 && count%10 != 0){
-            console.log('prix is = ' +data[10]);
+         
             totalcontainer.html(
                 `<div class="price"><p>`+ data[10]+`</p></div>`
             )
@@ -196,6 +196,6 @@ function printScreen() {
 
 }
 
-// Call the fetchData function when the page loads
+
 
 });
