@@ -33,7 +33,7 @@ $(document).ready(function(){
 
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=20';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=15';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Ajax Jquery
@@ -153,8 +153,13 @@ $(document).ready(function(){
                     </td>
                 </tr>
                 <tr class="second-titling-section">
-                    <td colspan="6">`+data[12]+`</td>
-                    <td colspan="6">`+data[11]+`</td>
+                    <td colspan="5">`+data[12]+`</td>
+                    <td colspan="3">
+                     <div class="barcode" id="barcode">
+                <img src="https://static.vecteezy.com/system/resources/previews/005/449/913/non_2x/barcode-on-white-background-illustration-vector.jpg" alt="">
+              </div>
+                    </td>
+                    <td colspan="4">`+data[11]+`</td>
 
                 </tr>
             `);
