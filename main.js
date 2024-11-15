@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-
+  
 
 // hide content on screen: 
  // Get the button, modal, and main content elements
@@ -9,6 +9,23 @@ $(document).ready(function(){
  const printModalBtn = document.getElementById('printModalBtn');
  const mainContent = document.getElementById('mainContent');
  const modal = document.getElementById('myModal');
+ const imprimermodal = document.getElementById('imprimermodal'); 
+
+let nndate; 
+let nnclient; 
+let thecontent = `
+ <html>
+  <head>
+   
+    <link rel="stylesheet" href="style.css">
+
+           
+</head>
+<body>
+`;
+                   
+
+
 
  // Show the modal and hide the main content
  openModalBtn.addEventListener('click', function() {
@@ -31,14 +48,32 @@ $(document).ready(function(){
     printModalContent();
  });
 
+imprimermodal.addEventListener('click', function(){
+    const newWindow = window.open('', '_blank', 'width=1000,height=600');
+
+    newWindow.document.open();
+    newWindow.document.write(thecontent);
+    newWindow.document.close();
+}); 
+
+function imprimerM(){
+    const newWindow = window.open('', '_blank', 'width=1000,height=600');
+
+    newWindow.document.open();
+    newWindow.document.write(thecontent);
+    newWindow.document.close();
+}
+
+/* =========== Manage n page content ========== */ 
+
  /***** Handling Data */
   // URL of the API (Example API for placeholder data)
-  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=15';
+  const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=20';
   const proxy = 'https://cors-anywhere.herokuapp.com/'; 
 
   // Ajax Jquery
   $.ajax({
-      url: proxy + apiURL,  
+      url: apiURL,  
       "default":{
         "dataType": "jsonp",
 	    "type": "GET",
@@ -92,8 +127,34 @@ $(document).ready(function(){
 
     nclient.append(data[12]); 
     date.append(data[11]);
+    nnclient = data[12]; 
+    nndate = data[11];
    
-    
+    thecontent = thecontent+`
+                      <table class="table  table-container">
+                       <tr class="second-titling-section">
+                    <td colspan="5">`+data[12]+`</td>
+                    <td colspan="3" class="imgbarcode">
+                        <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on" width="140"/>
+                    </td>
+                    <td colspan="4">`+data[11]+`</td>
+
+                </tr>
+                      </table>
+               <div class="table-responsive">
+                  <table class="table table-container">
+                    <thead>
+                      <th><div class="oeil">Oeil</div></th>
+                      <th><div class="iitem">Cyl</div></th>
+                      <th><div class="iitem">Sph</div></th>
+                      <th><div class="iitem">Axe</div></th>
+                      <th><div class="iitem">Add</div></th>
+                      <th><div class="designation">Désignation</div></th>
+                      <th><div class="quantite">Quantité</div></th>
+                      <th><div class="iitem">PrixU</div></th>
+                      <th><div class="iitem">Total</div></th>
+                    </thead> `; 
+
     /** HANDLING DATA */
     let rows = []; 
     /* FILL MODAL CONTENT */
@@ -121,7 +182,10 @@ $(document).ready(function(){
         count++; 
         
         // Append the regular table row
+        // return data: 
+    
         testing.append(`
+            
             <tr>
                 <td><div class="oeil">` + OEILS[index] + `</div></td>
                 <td><div class="iitem">` + CYLS[index] + `</div></td>
@@ -134,15 +198,27 @@ $(document).ready(function(){
                 <td><div class="iitem">` + TOTALS_PROD[index] + `</div></td>
             </tr>
         `);
+        thecontent = thecontent+ `  <tr>
+                <td><div class="oeil">` + OEILS[index] + `</div></td>
+                <td><div class="iitem">` + CYLS[index] + `</div></td>
+                <td><div class="iitem">` + SPH[index] + `</div></td>
+                <td><div class="iitem">` + AXES[index] + `</div></td>
+                <td><div class="iitem">` + ADDS[index] + `</div></td>
+                <td><div class="designation">` + DESIGNATIONS[index] + `</div></td>
+                <td><div class="quantite">` + QTES[index] + `</div></td>
+                <td><div class="iitem">` + PUS[index] + `</div></td>
+                <td><div class="iitem">` + TOTALS_PROD[index] + `</div></td>
+            </tr>`; 
+       
+         
         
-        // Gap rows: 
-        // Check if the counter reached 12
+        // if count reached exactly 10 and still data to find ( add *** to price)
         if (count === 10 && index != OEILS.length -1) {
             // Append a row with the total section and gap after 12th row
             testing.append(`
                 <tr>
                     <td colspan="9">
-                        <div class="total-section">
+                        <div class="total-section" style="text-align:right">
                             <p>***</p>
                         </div>
                     </td>
@@ -154,19 +230,38 @@ $(document).ready(function(){
                 </tr>
                 <tr class="second-titling-section">
                     <td colspan="5">`+data[12]+`</td>
-                    <td colspan="3">
-                     <div class="barcode" id="barcode">
-                <img src="https://static.vecteezy.com/system/resources/previews/005/449/913/non_2x/barcode-on-white-background-illustration-vector.jpg" alt="">
-              </div>
+                    <td colspan="3" class="imgbarcode">
+                        <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on" width="140"/>
                     </td>
                     <td colspan="4">`+data[11]+`</td>
 
                 </tr>
             `);
+            thecontent = thecontent + `<tr>
+                    <td colspan="9">
+                        <div class="total-section" style="text-align:right">
+                            <p>***</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9">
+                        <div class="gap"></div>
+                    </td>
+                </tr>
+                <tr class="second-titling-section">
+                    <td colspan="5">`+data[12]+`</td>
+                    <td colspan="3" class="imgbarcode">
+                        <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on" width="140"/>
+                    </td>
+                    <td colspan="4">`+data[11]+`</td>
+
+                </tr>`; 
            
             // Reset the count
             count = 0;
         }
+        // if counter reached 10 or division of 10 ( max paper) and no more data ( return price)
         if (count % 10 == 0 && index === OEILS.length-1) {
             // Append a row with the total section and gap after 12th row
             testing.append(`
@@ -183,24 +278,59 @@ $(document).ready(function(){
                     </td>
                 </tr>
             `);
+            thecontent = thecontent + `
+                <tr>
+                    <td colspan="9">
+                        <div class="total-section" style="text-align:right">
+                            <p>`+data[10]+`</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9">
+                        <div class="gap"></div>
+                    </td>
+                </tr>
+            `; 
            
             // Reset the count
             count = 0;
         }
+        // if data reached the end but not less than 10 ( not full paper)
         if(index === OEILS.length-1 && count%10 != 0){
          
             totalcontainer.html(
                 `<div class="price"><p>`+ data[10]+`</p></div>`
-            )
+            ); 
+            
         }
+      
        
     }
 
     /** END DISPLAYING DATA */
+     console.log(thecontent);
 
 
 }
 
+/* barcode generator */
+
+        /*function generateBarcode(code) {
+            JsBarcode("#barcode", code, {
+                format: "CODE128",
+                lineColor: "#0aa",
+                width: 1,
+                height: 30,
+                displayValue: false,
+                marginTop: -5,
+                textMargin: 5,  
+                fontSize: 8,
+            })
+        }
+        // Example: Generate barcode for "123456789012"
+        generateBarcode("123456789012");*/
 
 
 });
+

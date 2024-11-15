@@ -42,69 +42,51 @@
     <!-- Button to trigger modal -->
 
     <!-- Modal HTML -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-body">
+    <div class="imprmodal">
+      <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
             <div class="modal-body">
-             <div class="ontopsection">
-              <div class="nclient" id="nclient"></div>
-              <div class="barcode" id="barcode">
-                <img src="https://static.vecteezy.com/system/resources/previews/005/449/913/non_2x/barcode-on-white-background-illustration-vector.jpg" alt="">
-              </div>
-              <div class="date" id="date"></div>
-             </div>
-          <!-- ROWING     <div class="row">
-                <div class="col-1">OEILS</div>
-                <div class="col-1">OEILS</div>
-                <div class="col-1">OEILS</div>
-                <div class="col-1">OEILS</div>
-                <div class="col-1">OEILS</div>
-                <div class="col-4">DESGIGNATION</div>
-                <div class="col-1">OEILS</div>
-                <div class="col-1">OEILS</div>
-                <div class="col-1">OEILS</div>
-              </div>
-              <div class="row">
-                <div class="col-1" id="OEILS">chargement</div>
-                <div class="col-1" id="CYLS">chargement</div>
-                <div class="col-1" id="SPHS">chargement</div>
-                <div class="col-1" id="AXES">chargement</div>
-                <div class="col-1" id="ADDS">chargement</div>
-                <div class="col-4" id="d">SF ORG VERRE 18754SF ORG VERRE 18754</div>
-                <div class="col-1" id="QTES">chargement</div>
-                <div class="col-1" id="PUS">chargement</div>
-                <div class="col-1" id="TOTALS_PROD">chargement</div>
-              </div>-->
-
-              <div class="table-responsive">
-                <table class="table table-bordered table-container">
-                  <thead>
-                    <th><div class="oeil">Oeil</div></th>
-                    <th><div class="iitem">Cyl</div></th>
-                    <th><div class="iitem">Sph</div></th>
-                    <th><div class="iitem">Axe</div></th>
-                    <th><div class="iitem">Add</div></th>
-                    <th><div class="designation">Désignation</div></th>
-                    <th><div class="quantite">Quantité</div></th>
-                    <th><div class="iitem">PrixU</div></th>
-                    <th><div class="iitem">Total</div></th>
-                  </thead> 
-                  <tbody id="thiis">
-                 
-                  </tbody>
-                </table> 
-              </div>
-
-              <div class="total-section" id="totals">
-              
+              <div class="modal-body">
+               <div class="ontopsection">
+                <div class="nclient" id="nclient"></div>
+                <div class="imgbarcode">
+                  <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on"/>
+                </div>
+                <div class="date" id="date"></div>
+               </div>
+          
+  
+                <div class="table-responsive">
+                  <table class="table table-bordered table-container">
+                    <thead>
+                      <th><div class="oeil">Oeil</div></th>
+                      <th><div class="iitem">Cyl</div></th>
+                      <th><div class="iitem">Sph</div></th>
+                      <th><div class="iitem">Axe</div></th>
+                      <th><div class="iitem">Add</div></th>
+                      <th><div class="designation">Désignation</div></th>
+                      <th><div class="quantite">Quantité</div></th>
+                      <th><div class="iitem">PrixU</div></th>
+                      <th><div class="iitem">Total</div></th>
+                    </thead> 
+                    <tbody id="thiis">
+                   
+                    </tbody>
+                  </table> 
+                </div>
+  
+                <div class="total-section" id="totals">
+                
+                </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <!-- New Print Button -->
-            <button type="button" class="btn btn-success" id="printModalBtn">Print Modal</button>
-            <button type="button" class="btn btn-secondary" id="closeModalBtn" data-bs-dismiss="modal">Close</button>
+            <div class="modal-footer">
+              <!-- New Print Button -->
+              <button type="button" class="btn btn-success" id="printModalBtn">Print Modal</button>
+              <a href="#" id="imprimermodal">Imprimer</a>
+              <button type="button" class="btn btn-secondary" id="closeModalBtn" data-bs-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>

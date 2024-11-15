@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>        
+        <title>{G_NOM_APP} {G_VERSION} </title>                
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/mesjs/dt/jquery.datetimepicker.css"/>
+        <link rel="icon" href="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/favicon.ico" type="image/x-icon" />
+        
+        <link rel="stylesheet" type="text/css" id="theme" href="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/css/theme-default.css"/>
+ 
+             <link href="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/css/pagination.css" rel="stylesheet">
+         <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/mesjs/jspageliste.js"></script>
+         
+         <!-- SCRIPTS AJOUTE-->
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+
+       
+       
+         <style> 
+          
+          
+.tag33-container {
+    display: flex;
+    gap: 10px;
+}
+
+.tag33 {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.tag33 .close-btn {
+    color: #ff4d4d;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tag33 .close-btn:hover {
+    color: #ff0000;
+}
+/* ====================== Impression Modal =============== */ 
+.imprmodal {
+ 
+}
+.imprmodal .corepage {
+  text-align: center;
+  padding-top: 10em;
+}
+.imprmodal .col-1, .imprmodal .col-10 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imprmodal table {
+  border-collapse: collapse;
+}
+.imprmodal th, .imprmodal td {
+  text-align: center; /* Horizontally center */
+  vertical-align: middle; /* Vertically center */
+  font-size: 15px; /* Smaller font size for printing */
+}
+.imprmodal #page-content {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+.imprmodal .modal-content {
+  border: none;
+}
+.imprmodal .hidden-content {
+  display: none;
+}
+.imprmodal .elementitem {
+  padding: 10px 0px;
+}
+.imprmodal .ontopsection {
+  display: none;
+}
+.imprmodal .total-section {
+  display: none;
+}
+.imprmodal .second-titling-section {
+  display: none !important;
+}
+@media print {
+  .imprbtn{display: none!important;visibility: hidden!important;}
+  .modal-backdrop{
+      display: none;
+    }
+    .page-content-wrap{
+      display: none!important;
+      visibility: hidden;
+    }
+    .breadcrumb{
+      display: none;
+    }
+  .imprmodal {
+    /* .barcode{
+
+         width: 130px;
+         img{
+             width: 90%;
+             margin-top: -10px;
+         }
+     }*/
+  }
+  @page {
+
+    .imprmodal{
+      size: auto; /* Set page size to A4 portrait */
+      margin-left: 10.16mm !important; /* Remove all margins */
+      padding: 0;
+      margin-right: 5mm---------------------------------------- !important;
+      margin-top: 18mm !important;
+      overflow: visible !important;
+    }
+   
+    .imprmodal html {
+      height: auto;
+    }
+    body{
+      display: none;
+    }
+  }
+  .imprmodal body {
+    overflow: hidden !important;
+    visibility: hidden !important;
+  }
+  .imprmodal .corepage {
+    padding: 0 !important;
+  }
+  .imprmodal .modal {
+    overflow: visible !important;
+    max-width: 100%;
+    position: static !important; /* Remove fixed positioning */
+    width: 100% !important; /* Full width */
+    height: 100% !important; /* Allow height to be automatic */
+    overflow: visible !important; /* Allow overflow */
+    display: block !important; /* Make sure it displays */
+    margin: 0; /* Remove margins */
+  }
+  .imprmodal .modal-dialog {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  .imprmodal .modal-dialog table {
+    border-color: transparent !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 0px !important;
+  }
+  .imprmodal .modal-dialog td, .imprmodal .modal-dialog th, .imprmodal .modal-dialog tr {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .imprmodal .modal-dialog thead:nth-child(1) {
+    display: none !important;
+  }
+  .imprmodal .modal-dialog td {
+    width: 50px !important;
+    
+  }
+  .imprmodal .modal-dialog td:nth-child(1) {
+    width: 40px !important;
+  }
+  .imprmodal .modal-dialog td:nth-child(6) {
+    width: 180px !important;
+  }
+  .imprmodal .modal-dialog .oeil {
+    text-align: center !important;
+  }
+  .imprmodal .modal-dialog .designation {
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
+    padding: 0 !important;
+    /* margin: 0 !important; */
+  }
+  .imprmodal .modal-content, .imprmodal .modal-content * {
+    padding: 0 !important;
+    visibility: visible; /* Show modal content */
+    font-size: 16px !important; /* Smaller font size for printing */
+  }
+  .imprmodal .modal-content th, .imprmodal .modal-content * th {
+    font-size: 13px !important;
+  }
+  .imprmodal .modal-footer, .imprmodal .btn {
+    display: none; /* Hide buttons during print */
+  }
+  .imprmodal .table-responsive {
+    overflow: hidden !important; /* Disable scrollbars */
+  }
+  .imprmodal .special-width {
+    font-size: 15px !important;
+    margin: 15px !important;
+  }
+  .imprmodal .ontopsection {
+    margin-left: 25mm !important;
+    margin-right: 10mm !important;
+    display: flex !important;
+    justify-content: space-between;
+    margin-bottom: 10mm !important;
+  }
+  .imprmodal .total-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 6mm !important;
+  }
+  .imprmodal .gap {
+    height: 30px;
+  }
+  .imprmodal .price {
+    margin-top: 80px;
+    margin-right: 5px;
+  }
+  .imprmodal .second-titling-section {
+    display: table-row !important;
+    height: 80px !important;
+    /* .barcode{
+         width: 100%;
+         text-align: center;
+         display: flex;
+         justify-content: center;
+         img{
+             //width: 35%;
+             width: 150px;
+         }
+     }*/
+  }
+  .imprmodal .second-titling-section td:nth-child(1) {
+    padding-left: 100px !important;
+    text-align: left;
+  }
+  .imprmodal .second-titling-section td:nth-child(2) {
+    text-align: center;
+  }
+  .imprmodal .second-titling-section td:nth-child(3) {
+    text-align: right;
+    padding-right: 50px !important;
+  }
+  .imprmodal .brimg {
+    width: 100px !important;
+  }
+  .imprmodal .imgbarcode img {
+    width: 90px !important;
+  }
+}/*# sourceMappingURL=style.css.map */
+/* ====================== Impression Modal =============== */ 
+</style>
+     
+        <script>
+function filtrer(){
+	// alert("rrr");
+	ck_stock = document.getElementById("ck_stock");
+	ck_atelier = document.getElementById("ck_atelier");
+	ck_montage = document.getElementById("ck_montage");
+	ck_bl = document.getElementById("ck_bl");
+	ck_bp = document.getElementById("ck_bp");
+	rech2 = document.getElementById("rech2");
+	champs1 = document.getElementById("champs1");
+	id_pv = document.getElementById("id_pv2");
+	id_pv_depot = document.getElementById("id_pv_depot");
+	date_debut = document.getElementById("datetimepicker18");
+	date_fin = document.getElementById("datetimepickerr2");
+	
+	url="";
+	if(ck_stock.checked)
+		url="?ck_stock=1";
+	if(ck_atelier.checked){
+		if(url==""){
+			url="?ck_atelier=1";
+			
+		}else{
+			
+			url+="&ck_atelier=1";
+		}
+	}
+	if(ck_montage.checked){
+		if(url==""){
+			url="?ck_montage=1";
+			
+		}else{
+			
+			url+="&ck_montage=1";
+		}
+	}
+	if(ck_bl.checked){
+		if(url==""){
+			url="?ck_bl=1";
+			
+		}else{
+			
+			url+="&ck_bl=1";
+		}
+	}
+	if(ck_bp.checked){
+		if(url==""){
+			url="?ck_bp=1";
+			
+		}else{
+			
+			url+="&ck_bp=1";
+		}
+	}
+	if(url==""){
+			url="?id_pv="+id_pv.value;
+			
+		}else{
+			
+			url+="&id_pv="+id_pv.value;
+		}
+	if(url==""){
+		url="?id_pv_depot="+id_pv_depot.value;
+			
+	}else{
+		url+="&id_pv_depot="+id_pv_depot.value;
+	}
+	if(url==""){
+		url="?date_debut="+date_debut.value;
+			
+	}else{
+		url+="&date_debut="+date_debut.value;
+	}
+	if(url==""){
+		url="?date_fin="+date_fin.value;
+			
+	}else{
+		url+="&date_fin="+date_fin.value;
+	}
+	
+	if(url==""){
+		url="?rech2="+rech2.value;
+			
+	}else{
+		url+="&rech2="+rech2.value;
+	}
+	if(url==""){
+		url="?champs1="+champs1.value;
+			
+	}else{
+		url+="&champs1="+champs1.value;
+	}
+	document.location.href='https://{URL_ABSOLU}/'+url;
+}
+            function creerFacture(idCmd,numFact,idFact){
+            
+                if(idFact!=0){
+            
+                    alert('Le BL est deja facturé (Voir facture N° '+numFact+')');
+            
+                }else{
+            
+                var reponse = confirm("Voulez-vous vraiment créer la facture pour la vente numéro "+idCmd+" ?");
+            
+            if (reponse == true) {
+            
+              // alert("Vous avez choisi Oui !");
+            
+              document.location.href='https://{URL_ABSOLU}/css/c30/op.php?o=9&idcmd='+idCmd;
+            
+            } else {
+            
+              //  alert("Vous avez choisi Non.");
+            
+            }
+            
+                }
+            
+                
+            
+            }
+            
+            function changerDate(id){
+            
+                //alert(id);
+            
+                var d1 = document.getElementById('datetimepicker'+id).value;
+            
+                var formData = new FormData();
+            
+                //formData.append('myfile', $('#myfile')[0].files[0]);
+            
+                formData.append('id_cmd', id);
+            
+                formData.append('datecmd', d1);
+            
+                
+            
+                
+            
+                $.ajax({
+            
+                       url: 'https://{URL_ABSOLU}/css/c5/op.php?o=5',
+            
+                    data: formData,
+            
+                    processData: false,
+            
+                    contentType: false,
+            
+                    type: 'POST',
+            
+                    // this part is progress bar
+            
+                    success: function (data) {
+            
+                        Swal.fire(
+            
+                                      'Modification!',
+            
+                                      'Modification effectuée avec succès.',
+            
+                                      'success'
+            
+                                )
+            
+                        //alert("Modification effectuée avec succès");
+            
+                        //var ttt = data.split("@");
+            
+                        //if(ttt[0]!='1'){
+            
+                        //	$('.msg').text(data);
+            
+                            //window.location.href = "https://ecole.test/?mod=matiere&o=6&idprof=1&idmat=&idcls=2";
+            
+            
+            
+                        //}
+            
+                        //else{
+            
+                            /// function addRow(elmt,idMat,url,titre,ext,description)
+            
+            
+            
+                            //addRow(document.getElementById('timg'), '',ttt[1],titre,ttt[3],description,ttt[4],ttt[5],ttt[6],ttt[7]);
+            
+                        //	$('#btn').removeAttr('disabled');	
+            
+                        //	$('.msg').text(ttt[2]);
+            
+                                        
+            
+                        //}
+            
+                    }
+            
+                });
+            
+            }
+            
+        </script>   
+
+
+            
+            
+    
+         
+    </head>
+    <body>
+        <div class="page-container">
+            
+           <!-- INCLUDE inc_left_menu.html -->
+       
+            <div class="page-content">
+                
+               
+               <!-- INCLUDE inc_menu_top.html -->
+                
+                <ul class="breadcrumb">
+                    <li><a href="index.php">Accueil</a></li>
+                    <li class="active"> Liste des bons </li>
+                </ul>
+                
+                <div class="page-content-wrap">
+                            
+                    <div class="row">
+                       <div class="col-md-12">
+
+                       
+                            <div class="panel panel-default">
+                                
+                                <div class="panel-body">
+                                    <div class="x_content">
+
+                                        <!-- INCLUDE ms_conf_mod2.html --> 
+     
+                                       <form action="https://{URL_ABSOLU}/" method="get">
+     
+      <table width="100%" id="tab1bne" border="0">
+     
+                        <tr>
+                          <td><button type="button"  style="width:155px;text-align:left;" class="btn btn-primary" onClick="document.location.href='https://{URL_ABSOLU}/?mod=cmds&o=1'"><span class="fa fa-list-alt"></span> &nbsp;  Bons annulées</button></td>
+                          <td><button type="button" style="width:155px;text-align:left;" class="btn btn-primary" onClick="document.location.href='https://{URL_ABSOLU}/?mod=gestmnt&o=1006&dejaimp=1'"><span class="fa fa-list-alt"></span> &nbsp; Cartes imprimées</button></td>
+                          <td align="left">&nbsp;</td>
+                          <td class="control-label">&nbsp;</td>
+                          <td class="control-label">Recherche</td>
+                          <td colspan="4" style="padding-right:5px;"><input type="text" class="form-control" name="rech2" id="rech2" value="{MOT_RECH2}"    autocomplete="off"></td>
+                          <td><select name="champs1" id="champs1" class="form-control">
+                            
+                            <option value="">Champs</option>
+                            
+                            <!-- BEGIN champs -->
+                            
+                            <!-- IF champs.ID eq SEL_CHAMP -->
+                            
+                            <option value="{champs.ID}" selected="selected">{champs.VAL}</option>
+                            
+                            <!-- ELSE -->
+                            
+                            <option value="{champs.ID}">{champs.VAL}</option>
+                            
+                            <!-- ENDIF -->
+                            
+                            <!-- END champs -->
+                            
+                          </select><div style="height:5px;"></div></td>
+                        </tr>
+                        <tr>
+     
+                          <td width="162"><button type="button" style="width:155px;text-align:left;" class="btn btn-primary" onClick="document.location.href='https://{URL_ABSOLU}/?mod=jrns&o=1'"><span class="fa fa-list-alt"></span> &nbsp; Bons imprimés</button> </td>
+     
+                          <td width="173"><button type="button" style="width:155px;text-align:left;" class="btn btn-primary" onClick="document.location.href='https://{URL_ABSOLU}/?mod=gestmnt&o=1025&dejaimp=1'"><span class="fa fa-list-alt"></span> &nbsp; Tickets imprimés</button></td>
+                          <td align="left">&nbsp;</td>
+                          <td class="control-label"> <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-check">
+                                <input class="form-check-input" name="ck_stock"  type="checkbox" value="1" id="ck_stock"{CK_STOCK}>
+                                <label class="form-check-label" for="checkbox1">
+                                  Stock 
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" name="ck_atelier" id="ck_atelier"{CK_ATELIER}>
+                                <label class="form-check-label" for="checkbox2">
+                                  Atelier
+                                </label>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" name="ck_montage" id="ck_montage"{CK_MONTAGE}>
+                                <label class="form-check-label" for="checkbox2">
+                                  Montage
+                                </label>
+                              </div>
+                            </div>
+                          </div></td>
+     
+                          <td class="control-label">Agence</td>
+     
+                          <td><select name="id_pv" id="id_pv2" class="form-control">
+                            
+                            <option value="">Sélectionner une agence</option>
+                            
+                            <!-- BEGIN pvs -->
+                            
+                            <!-- IF pvs.ID eq ID_PV -->
+                            
+                            <option value="{pvs.ID}" selected="selected">{pvs.NOM}</option>
+                            
+                            <!-- ELSE -->
+                            
+                            <option value="{pvs.ID}">{pvs.NOM}</option>
+                            
+                            <!-- ENDIF -->
+                            
+                            <!-- END pvs -->
+                            
+                          </select></td>
+     
+                          <td>&nbsp;</td>
+     
+                          <td>&nbsp;</td>
+     
+                          <td> &nbsp;&nbsp;Du </td>
+     
+                          <td><input type="text" class="form-control" name="date_debut" value="{DATE_DEBUT}"  id="datetimepicker18" autocomplete="off"> <!-- INCLUDE inc_dt18.html -->
+     
+                            <div style="height:5px;"></div>
+     
+                           </td>
+     
+                        </tr>
+     
+                          <tr>
+     
+                            <td><button type="button" style="width:155px;text-align:left;" class="btn btn-primary" onClick="document.location.href='https://{URL_ABSOLU}/?mod=jrns&o=1'"><span class="fa fa-list-alt"></span> &nbsp;  Articles vendues </button></td>
+     
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="control-label"> <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="1"  id="ck_bl" name="ck_bl"{CK_BL}>
+                                  <label class="form-check-label" for="checkbox1">
+                                    BL 
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="1" id="ck_bp" name="ck_bp"{CK_BP}>
+                                  <label class="form-check-label" for="checkbox2">
+                                    BP
+                                  </label>
+                                </div>
+                              </div>
+                            </div></td>
+     
+                            <td>Dépôt</td>
+     
+                            <td><select name="id_pv_depot" id="id_pv_depot" class="form-control">
+                            
+                            <option value="">Sélectionner un dépôt</option>
+                            
+                            <!-- BEGIN pvsd -->
+                            
+                            <!-- IF pvsd.ID eq ID_PV_DEPOT -->
+                            
+                            <option value="{pvsd.ID}" selected="selected">{pvsd.NOM}</option>
+                            
+                            <!-- ELSE -->
+                            
+                            <option value="{pvsd.ID}">{pvsd.NOM}</option>
+                            
+                            <!-- ENDIF -->
+                            
+                            <!-- END pvsd -->
+                            
+                          </select></td>
+     
+                            <td>&nbsp;</td>
+     
+                            <td>&nbsp;</td>
+     
+                            <td> &nbsp;&nbsp;Au</td>
+     
+                            <td><input type="text" class="form-control" name="date_fin" value="{DATE_FIN}" id="datetimepickerr2" autocomplete="off"><script src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/dt/jquery.js"></script>
+<script src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/dt/jquery.datetimepicker.full.js"></script>
+<script>
+$.datetimepicker.setLocale('fr');
+
+$('#datetimepickerr2').datetimepicker({
+	//dayOfWeekStart : 1,
+ format: 'Y/m/d',
+//lang:'fr',
+dayOfWeekStart : 1,
+lang:'fr',
+ });
+$('#datetimepickerr2').datetimepicker({value:'',step:10});
+
+$('.some_class').datetimepicker();
+
+$('#default_datetimepicker').datetimepicker({
+formatTime:'H:i',
+	formatDate:'d.m.Y',
+	//defaultDate:'8.12.1986', // it's my birthday
+	defaultDate:'+03.01.1970', // it's my birthday
+	defaultTime:'10:00',
+	timepickerScrollbar:false
+});
+ 
+$('#close').click(function(){
+	$('#datetimepickerr2').datetimepicker('hide');
+});
+$('#reset').click(function(){
+	$('#datetimepickerr2').datetimepicker('reset');
+});
+   
+     
+     </script><div style="height:5px;"></div></td>
+     
+                          </tr>
+     
+                          <tr>
+     
+                            <td colspan="5">Filtre : <div class="tag33-container">
+        <!-- BEGIN lstfiltres --> <span class="tag33">
+            {lstfiltres.CHAMP}:{lstfiltres.VAL}
+            <a href="https://{URL_ABSOLU}/css/c33/op.php?o=15&champsabv={lstfiltres.CHAMP_ABV}&page=LISTE_BL_AGENT{URL_PAGE}"><i class="glyphicon glyphicon-trash close-btn"></i></a>
+        </span><!-- END lstfiltres -->
+         
+        
+    </div>
+
+    <script>
+        // Suppression du tag lorsqu'on clique sur l'icône
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.remove();
+            });
+        });
+    </script></td>
+     
+                            <td>&nbsp;</td>
+     
+                            <td>&nbsp;</td>
+     
+                            <td>&nbsp;</td>
+     
+                            <td>&nbsp;</td>
+     
+                            <td style="text-align: right;"><button type="button" class="btn btn-info" style="display:none" onClick="return;document.location.href='https://{URL_ABSOLU}/?mod=cmds&date_debut={DATE_DEBUT}&date_fin={DATE_FIN}&impp=ok&id_pv={ID_PV}'"><span class="fa fa-print"></span> &nbsp;  Imprimer </button>   &nbsp; &nbsp;<button type="button" class="btn btn-success" onClick="filtrer()"><span class="fa fa-filter"></span> &nbsp;Filtrer  </button></td>
+     
+                          </tr>
+     
+                       
+     
+                       </table>
+     
+                       </form> 
+     
+                                      <table id="example" class="table">
+     
+                                             <thead>
+     
+                                                 <tr>
+     
+                                                     <th>Code client</th>
+     
+                                                     <th>Client</th>
+     
+                                                     <th>Ville </th>
+                                                     <th>BL / BP</th>
+     
+                                                     <th>Date </th>
+                                                     <th>Q. Verre</th>
+     
+                                                     <th>Montant</th>
+     
+                                                     <th>Responsable</th>
+     
+                                                     <th>Depot</th>
+     
+                                                   <th class=" no-link last"><span class="nobr">Etat</span>
+     <th>Porteur</th>
+     <th>Cartes</th>
+     <th>Tickets</th>
+     <th>BL</th>
+     <th>BP</th>
+     <th>Action</th>
+                                                     </th>
+     
+                                                 </tr>
+     
+                                             </thead>
+     
+     
+     
+                                             <tbody>
+     
+                                             <!-- BEGIN cmds -->
+     
+     
+     
+                                                 <tr class="even pointer">
+     
+                                                     <td class=" ">{cmds.CODE_CLT} </td>
+     
+                                                   <td class=" ">{cmds.NOM_CLT}</td>
+     
+                                                   <td class=" ">{cmds.NOM_VILLE}</td>
+                                                   <td>{cmds.NUM_BON}</td>
+     
+                                                     <td><a href="https://{URL_ABSOLU}/fiche_client/{cmds.ID_CLT}" style="color:#000;">{cmds.DATE_CMD}</a>
+     
+                                                     </td>
+                                                     <td class="a-right a-right ">{cmds.QTE_VERRE}</td>
+     
+                                                     <td class="a-right a-right ">{cmds.TOTAL_TTC}</td>
+     
+                                                     <td class="a-right a-right ">{cmds.NOM_EMP}</td>
+     
+                                                     <td class="a-right a-right ">{cmds.NOM_DEPOT}</td>
+     
+   <td>  {cmds.VALEUR_ETAT} </td>
+                                 <td class="a-right a-right ">{cmds.PORTEUR}</td>
+                                  <td class="a-right a-right "><!-- IF cmds.ID_CARTE neq '0'  --><a onclick="confirmOper('https://{URL_ABSOLU}/css/c22/op.php?o=3&id={cmds.ID}&src={cmds.SOURCE}&type=CARTE&p={PAGE_CRNT}&q={MOT_RECHERCHE}&num_bon={cmds.NUM_BON}','Voulez-vous vraiment imprimer la carte?',true);" title="Imprimer" style="cursor:pointer;"><i class="fa fa-print" style="font-size: 24px;margin-right:8px; color:green;"></i></a><!-- ENDIF  --></td>
+                                   <td class="a-right a-right "><!-- IF cmds.ID_TICKET neq '0'  --><a onclick="confirmOper('https://{URL_ABSOLU}/css/c22/op.php?o=3&id={cmds.ID}&src={cmds.SOURCE}&type=TICKET&p={PAGE_CRNT}&q={MOT_RECHERCHE}&num_bon={cmds.NUM_BON}','Voulez-vous vraiment imprimer le ticket?',true);" title="Imprimer" style="cursor:pointer;"><i class="fa fa-print" style="font-size: 24px;margin-right:8px; color:green;"></i></a><!-- ENDIF  --></td>
+                                    <td class="a-right a-right ">  <a href="#" onclick="opentmodal()" >Imprimer</a></td>
+                                     <td class="a-right a-right ">
+                                     
+                                     
+                                     <!-- IF cmds.ID_BP neq '0'  --><a href="https://abgescom.test/?mod=ventes&id2={cmds.ID_BP}&typebon=BP&impp=ok" title="Imprimer" target="_blank"><i class="fa fa-print" style="font-size: 24px;margin-right:8px; color:green;"></i></a><!-- ENDIF  --></td>
+                                      <td class=" last"><a href="https://{URL_ABSOLU}/?mod=ventes&id2={cmds.ID}" title="Modifier"><i class="fa fa-edit" style="font-size: 24px; margin-right:8px; color:#0066FF"></i></a>
+                                                     
+                                         
+                          <!-- IF cmds.SOURCE eq 'BL' -->    <a href="https://{URL_ABSOLU}/css/c20/op.php?o=4&id={cmds.ID}&id_pv={ID_PV}&date_debut={DATE_DEBUT}&date_fin={DATE_FIN}&p={PAGE_CRNT}&q={MOT_RECHERCHE}&page=INDEX_OPERAT" title="Supprimer" style="cursor:pointer;"><i class="fa fa-trash-o" style="font-size: 24px; color:red;"></i></a>                       <!-- ELSE -->
+                          <a onclick="confirmOper('https://{URL_ABSOLU}/css/c20/op.php?o=4&id={cmds.ID}&id_pv={ID_PV}&date_debut={DATE_DEBUT}&date_fin={DATE_FIN}&p={PAGE_CRNT}&q={MOT_RECHERCHE}&tabboard=1','Voulez-vous vraiment supprimer cet objet?',true);" title="Supprimer"><i class="fa fa-trash-o" style="font-size: 24px; color:red; cursor:pointer;"></i></a>
+                          <!-- ENDIF -->
+                                                  
+                                 </td>
+     
+                                                 </tr>
+     
+                                           <!-- END cmds -->
+     
+     
+     
+                                             </tbody>
+     
+     
+     
+                                         </table> 
+     
+                                          {PAGINATION}
+     
+                                  </div>
+                                </div>
+                            </div>
+                        
+
+                        </div> 
+						
+                        
+                       
+                    </div>
+                    
+                 
+					                  
+               
+                    
+                    
+                </div>
+               
+
+                
+                <!-- footer content -->
+
+                                                                 <!-- INCLUDE pg15545689.html -->
+
+
+
+                <!-- /footer content -->
+                
+            </div>            
+            
+        </div>
+        <!-- Modal HTML -->
+    <div class="imprmodal" id="imprmodal">
+      <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="modal-body">
+               <div class="ontopsection">
+                <div class="nclient" id="nclient"></div>
+                <div class="imgbarcode">
+                  <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on"/>
+                </div>
+                <div class="date" id="date"></div>
+               </div>
+          
+  
+                <div class="table-responsive">
+                  <table class="table table-bordered table-container">
+                    <thead>
+                      <th><div class="oeil">Oeil</div></th>
+                      <th><div class="iitem">Cyl</div></th>
+                      <th><div class="iitem">Sph</div></th>
+                      <th><div class="iitem">Axe</div></th>
+                      <th><div class="iitem">Add</div></th>
+                      <th><div class="designation">Désignation</div></th>
+                      <th><div class="quantite">Quantité</div></th>
+                      <th><div class="iitem">PrixU</div></th>
+                      <th><div class="iitem">Total</div></th>
+                    </thead> 
+                    <tbody id="thiis">
+                   
+                    </tbody>
+                  </table> 
+                </div>
+  
+                <div class="total-section" id="totals">
+                
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!-- New Print Button -->
+              <button type="button" class="btn btn-success" id="printModalBtn" style="display: none;">Print Modal</button>
+              <a href="#" id="imprimermodal">Imprimer</a>
+              <button type="button" class="btn btn-secondary" id="closeModalBtn" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+       
+         <!-- INCLUDE inc_deconnecter.html -->
+        
+         
+        
+
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/bootstrap/bootstrap.min.js"></script>        
+        
+
+        <script type='text/javascript' src='https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/icheck/icheck.min.js'></script>        
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+        
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/morris/raphael-min.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/morris/morris.min.js"></script>       
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/rickshaw/d3.v3.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/rickshaw/rickshaw.min.js"></script>
+        <script type='text/javascript' src='https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+        <script type='text/javascript' src='https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>                
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/owl/owl.carousel.min.js"></script>                 
+        
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/moment.min.js"></script>
+
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/settings.js"></script>
+        
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins.js"></script>        
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/actions.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/plugins/bootstrap/bootstrap-select.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/demo_dashboard.js"></script>
+        <script type="text/javascript" src="https://{URL_ABSOLU}/templates/{DEFAULT_TEMP}/pages/js/demo_charts_morris.js"></script>
+ 
+
+        <!-- =================  IMPRESSION SCRIPT ============== -->
+<script>
+    
+    function opentmodal() {
+            $('#myModal').modal('show'); 
+        }
+
+$( document ).ready(function() {
+
+    // hide content on screen: 
+     // Get the button, modal, and main content elements
+     const openModalBtn = document.getElementById('openModalBtn');
+     const closeModalBtn = document.getElementById('closeModalBtn');
+     const printModalBtn = document.getElementById('printModalBtn');
+     const mainContent = document.getElementById('mainContent');
+    // const modal = document.getElementById('myModal');
+     //const imprimermodal = document.getElementById('imprimermodal'); 
+
+
+    
+
+    let nndate; 
+    let nnclient; 
+    let thecontent = `
+     <html>
+      <head>
+       
+        <link rel="stylesheet" href="style.css">
+    
+               
+    </head>
+    <style>
+      .brimg{
+      width:90px!important;
+      }
+            @media print {
+            .prix{text-align:right!important;}
+            .total-section{padding-right:20px;}
+           .imgbarcode{text-align:center;}
+           .imgbarcode img{width:90px!important;}
+            .table>:not(caption)>*>*{padding: .49rem .5rem!important; text-align:center;}
+            .sname{padding-left:100px !important;}
+            .second-titling-section{height:80px;}
+           .second-titling-section td:nth-child(1) {
+    padding-left: 100px !important;
+    text-align: left;
+  }.
+  second-titling-section td:nth-child(2) {
+    text-align: center;
+  }
+    .second-titling-section td:nth-child(3) {
+    text-align: right;
+    padding-right: 50px !important;
+  }
+            .gap{height:35px;}
+            tbody{font-size:14px}
+             .theader{
+        display:none!important;}
+         .imprbtn{display: none!important;visibility: hidden!important;}
+          .table{border:transparent!important;}
+
+      @page{
+      .imprmodal {
+      size: auto; /* Set page size to A4 portrait */
+      margin-left: 10.16mm !important; /* Remove all margins */
+      padding: 0;
+      margin-right: 5mm---------------------------------------- !important;
+      margin-top: 18mm !important;
+      overflow: visible !important;
+      .brimg{
+        width:70px!important;
+      }
+       
+    }
+      }
+    }
+      </style>
+    <body>
+      <div class="imprbody">
+    `;
+                       
+
+     // Show the modal and hide the main content
+    /* openModalBtn.addEventListener('click', function() {
+      //   mainContent.classList.add('hidden-content');  // Hide main content
+         var myModal = new bootstrap.Modal(modal);    // Show modal
+         myModal.show();
+     });*/
+    
+     // When the modal is closed, show the main content again
+     closeModalBtn.addEventListener('click', function() {
+         //mainContent.classList.remove('hidden-content');  // Show main content
+     });
+    
+     // Print only the modal content when the Print button is clicked
+     printModalBtn.addEventListener('click', function() {
+        
+        
+        window.print();  //manual print
+        //auto print: 
+        printModalContent();
+     });
+    
+    imprimermodal.addEventListener('click', function(){
+        const newWindow = window.open('', '_blank', 'width=1000,height=600');
+        newWindow.document.open();
+        newWindow.document.write(thecontent);
+        newWindow.document.close();
+        newWindow.onload = function () {
+        newWindow.print();
+    };
+      
+    });
+    
+    function imprimerM(){
+    const newWindow = window.open('', '_blank', 'width=1000,height=600');
+
+    newWindow.document.open();
+    newWindow.document.write(thecontent);
+    newWindow.document.close();
+}
+    
+    /* =========== Manage n page content ========== */ 
+    
+     /***** Handling Data */
+      // URL of the API (Example API for placeholder data)
+      const apiURL = 'https://p22.gigamanager.com/css/ws/vente/ws_get_info_bl.php?nb_prod=20';
+     
+    
+      // Ajax Jquery
+      $.ajax({
+          url: apiURL,  
+          "default":{
+            "dataType": "jsonp",
+          "type": "GET",
+          "contentType": "Application/json",
+          "crossDomain": true,
+          "Access-Control-Allow-Origin": "*",},
+          // API URL
+          type: 'GET',   
+          dataType: 'json',  
+          success: function (data) {
+          
+            let dataasarray = Object.values(data);
+            display(dataasarray)
+          
+        },
+          error: function(error) {
+              
+              $('#dataContainer').html('Error!');
+          }
+      });
+    
+      // Function to display data
+      function display(data) {
+        // setting containers
+        const oeilscontainer = $('#OEILS'); 
+        const cylscontainer = $('#CYLS'); 
+        const sphscontainer = $('#SPHS'); 
+        const axescontainer = $('#AXES'); 
+        const addscontainer = $('#ADDS'); 
+        const descontainer = $('#DES'); 
+        const qtescontainer = $('#QTES'); 
+        const puscontainer = $('#PUS'); 
+        const totalcontainer = $('#totals'); 
+        const nclient = $('#nclient'); 
+        let date = $('#date'); 
+        const testing = $('#thiis'); 
+        testing.empty(); 
+    
+        // clear containers
+        oeilscontainer.empty(); 
+        cylscontainer.empty(); 
+        sphscontainer.empty(); 
+        axescontainer.empty(); 
+        addscontainer.empty(); 
+        qtescontainer.empty(); 
+        descontainer.empty(); 
+        puscontainer.empty(); 
+        totalcontainer.empty(); 
+        nclient.empty(); 
+        //date.empty(); 
+    
+        nclient.append(data[12]); 
+        date.append(data[11]);
+        nnclient = data[12]; 
+        nndate = data[11];
+       
+        thecontent = thecontent+`
+                          <table class="table imprmodal table-container">
+                           <tr class="second-titling-section">
+                        <td colspan="5" class="sname">`+data[12]+`</td>
+                        <td colspan="3" class="imgbarcode">
+                            <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on" width='90'/>
+                        </td>
+                        <td colspan="4">`+data[11]+`</td>
+    
+                    </tr>
+                          </table>
+                   <div class="table-responsive">
+                      <table class="table table-container">
+                        <thead class="theader">
+                          <th><div class="oeil">Oeil</div></th>
+                          <th><div class="iitem">Cyl</div></th>
+                          <th><div class="iitem">Sph</div></th>
+                          <th><div class="iitem">Axe</div></th>
+                          <th><div class="iitem">Add</div></th>
+                          <th><div class="designation">Désignation</div></th>
+                          <th><div class="quantite">Quantité</div></th>
+                          <th><div class="iitem">PrixU</div></th>
+                          <th><div class="iitem">Total</div></th>
+                        </thead> `; 
+    
+        /** HANDLING DATA */
+        let rows = []; 
+        /* FILL MODAL CONTENT */
+       for (let index = 0; index < 10; index++) {
+        let row = data[index];
+        rows.push(row)
+        
+       }
+       let OEILS = rows[1]; 
+       let CYLS = rows[2]; 
+       let SPH = rows[3]; 
+       let AXES = rows[4]; 
+       let ADDS = rows[5]; 
+       let DESIGNATIONS = rows[6]; 
+       let QTES = rows[7]; 
+       let PUS = rows[8]; 
+       let TOTALS_PROD = rows[9]; 
+       
+        /**** End handling data */
+    
+        /** DISPLAYING DATA */
+    
+        let count = 0; 
+        for (let index = 0; index < OEILS.length; index++) {
+            count++; 
+            
+            // Append the regular table row
+            // return data: 
+        
+            testing.append(`
+                
+                <tr>
+                    <td><div class="oeil">` + OEILS[index] + `</div></td>
+                    <td><div class="iitem">` + CYLS[index] + `</div></td>
+                    <td><div class="iitem">` + SPH[index] + `</div></td>
+                    <td><div class="iitem">` + AXES[index] + `</div></td>
+                    <td><div class="iitem">` + ADDS[index] + `</div></td>
+                    <td><div class="designation">` + DESIGNATIONS[index] + `</div></td>
+                    <td><div class="quantite">` + QTES[index] + `</div></td>
+                    <td><div class="iitem">` + PUS[index] + `</div></td>
+                    <td><div class="iitem">` + TOTALS_PROD[index] + `</div></td>
+                </tr>
+            `);
+            thecontent = thecontent+ `  <tr>
+                    <td><div class="oeil">` + OEILS[index] + `</div></td>
+                    <td><div class="iitem">` + CYLS[index] + `</div></td>
+                    <td><div class="iitem">` + SPH[index] + `</div></td>
+                    <td><div class="iitem">` + AXES[index] + `</div></td>
+                    <td><div class="iitem">` + ADDS[index] + `</div></td>
+                    <td><div class="designation">` + DESIGNATIONS[index] + `</div></td>
+                    <td><div class="quantite">` + QTES[index] + `</div></td>
+                    <td><div class="prix">` + PUS[index] + `</div></td>
+                    <td><div class="iitem">` + TOTALS_PROD[index] + `</div></td>
+                </tr>`; 
+                
+           
+             
+            
+            // if count reached exactly 10 and still data to find ( add *** to price)
+            if (count === 10 && index != OEILS.length -1) {
+                // Append a row with the total section and gap after 12th row
+                testing.append(`
+                    <tr>
+                        <td colspan="9">
+                            <div class="total-section" style="text-align:right">
+                                <p>***</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9">
+                            <div class="gap"></div>
+                        </td>
+                    </tr>
+                    <tr class="second-titling-section">
+                        <td colspan="5">`+data[12]+`</td>
+                        <td colspan="3" class="imgbarcode">
+                            <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on" />
+                        </td>
+                        <td colspan="4">`+data[11]+`</td>
+    
+                    </tr>
+                `);
+                thecontent = thecontent + `<tr>
+                        <td colspan="9">
+                            <div class="total-section" style="text-align:right">
+                                <p>***</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9">
+                            <div class="gap"></div>
+                        </td>
+                    </tr>
+                    <tr class="second-titling-section">
+                        <td colspan="5">`+data[12]+`</td>
+                        <td colspan="3" class="imgbarcode">
+                            <img class="brimg" src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=Code128&translate-esc=on" />
+                        </td>
+                        <td colspan="4">`+data[11]+`</td>
+    
+                    </tr>`; 
+                    
+               
+                // Reset the count
+                count = 0;
+            }
+            // if counter reached 10 or division of 10 ( max paper) and no more data ( return price)
+            if (count % 10 == 0 && index === OEILS.length-1) {
+                // Append a row with the total section and gap after 12th row
+                testing.append(`
+                    <tr>
+                        <td colspan="9">
+                            <div class="total-section">
+                                <p>`+data[10]+`</p>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="9">
+                            <div class="gap"></div>
+                        </td>
+                    </tr>
+                `);
+                thecontent = thecontent + `
+                    <tr>
+                        <td colspan="9">
+                            <div class="total-section" style="text-align:right">
+                                <p>`+data[10]+`</p>
+                            </div>
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9">
+                            <div class="gap"></div>
+                        </td>
+                    </tr>
+                `; 
+                
+               
+                // Reset the count
+                count = 0;
+            }
+            // if data reached the end but not less than 10 ( not full paper)
+            if(index === OEILS.length-1 && count%10 != 0){
+             
+                totalcontainer.html(
+                    `<div class="price"><p>`+ data[10]+`</p></div>`
+                ); 
+                thecontent = thecontent + `<td colspan='9' style="text-align:right;">`+ data[10]+`</td></tr>`
+                
+            }
+          
+           
+        }
+    
+        thecontent = thecontent + `<tr><td><button class="imprbtn btn btn-success" onclick='window.print();'>Imprimer</button></td></tr></div>`;
+       
+        /* end code */ 
+    
+    
+    }});
+    
+  
+    
+    
+    
+</script>
+    </body>
+</html>
+
+
+
+
+
+
